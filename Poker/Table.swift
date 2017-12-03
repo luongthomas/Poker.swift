@@ -16,10 +16,10 @@ public struct Table {
         self.cards = cards
     }
     
-    public func bestHandWithCards(cards: [Card]) -> Hand? {
+    public func bestHandWithCards(_ cards: [Card]) -> Hand? {
         guard let c = try? combineCards(self.cards + cards) else { return nil }
         
-        let orderedHands = c.sort { bestHand(Hand(cards: $0), Hand(cards: $1)) == Hand(cards: $0) }
+        let orderedHands = c.sorted { bestHand(Hand(cards: $0), Hand(cards: $1)) == Hand(cards: $0) }
         
         guard orderedHands.count > 0 else { return nil }
         return Hand(cards: orderedHands[0])
@@ -32,23 +32,23 @@ extension Table: CustomStringConvertible {
     }
 }
 
-func combineCards(cards: [Card]) throws -> [[Card]] {
+func combineCards(_ cards: [Card]) throws -> [[Card]] {
     let combinations = try combine(cards.count, 5)
     return combinations.map { $0.map { cards[$0] } }
 }
 
-func combine(n: Int, _ k: Int) throws -> [[Int]] {
+func combine(_ n: Int, _ k: Int) throws -> [[Int]] {
     
-    enum CombineErrors: ErrorType {
-        case ZeroSets
-        case SetsBiggerThanMuestra
+    enum CombineErrors: Error {
+        case zeroSets
+        case setsBiggerThanMuestra
     }
     
-    guard k > 0 else { throw CombineErrors.ZeroSets }
-    guard n >= k else { throw CombineErrors.SetsBiggerThanMuestra }
+    guard k > 0 else { throw CombineErrors.zeroSets }
+    guard n >= k else { throw CombineErrors.setsBiggerThanMuestra }
     
     var retArray = [[Int]]()
-    var arr = [Int](count: k, repeatedValue: 0)
+    var arr = [Int](repeating: 0, count: k)
     var f: (Int, Int) -> Void = {(_) in}
     f = {
         i, next in

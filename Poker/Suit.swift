@@ -7,23 +7,23 @@
 //
 
 public enum Suit: Int {
-    case Clubs = 0
-    case Hearts
-    case Diamonds
-    case Spades
+    case clubs = 0
+    case hearts
+    case diamonds
+    case spades
     
     static func allSuits() -> [Suit] {
-        return [.Clubs, .Hearts, .Diamonds, .Spades]
+        return [.clubs, .hearts, .diamonds, .spades]
     }
 }
 
 extension Suit: Emojiable {
     var emojiValue: String {
         switch self {
-        case .Clubs: return "♣️"
-        case .Hearts: return "♥️"
-        case .Diamonds: return "♦️"
-        case .Spades: return "♠️"
+        case .clubs: return "♣️"
+        case .hearts: return "♥️"
+        case .diamonds: return "♦️"
+        case .spades: return "♠️"
         }
     }
 }

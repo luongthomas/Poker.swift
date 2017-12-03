@@ -8,19 +8,19 @@
 
 public enum Number: Int {
     
-    case Two = 1
-    case Three
-    case Four
-    case Five
-    case Six
-    case Seven
-    case Eight
-    case Nine
-    case Ten
-    case Jack
-    case Queen
-    case King
-    case Ace
+    case two = 1
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    case nine
+    case ten
+    case jack
+    case queen
+    case king
+    case ace
     
     static func allNumbers() -> [Number] {
         return (1...13).flatMap { Number(rawValue: $0) }
@@ -31,11 +31,11 @@ public enum Number: Int {
 public extension Number {
 
     var orderValue: Int {
-        return self == .Ace ? 0 : self.rawValue
+        return self == .ace ? 0 : self.rawValue
     }
     
     public var straightValues: [Int] {
-        return [self.rawValue] + (self == .Ace ? [0] : [])
+        return [self.rawValue] + (self == .ace ? [0] : [])
     }
 }
 

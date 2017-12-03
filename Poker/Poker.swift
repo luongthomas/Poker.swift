@@ -6,7 +6,7 @@
 //  Copyright © 2015 Jorge Izquierdo. All rights reserved.
 //
 
-infix operator |*| {}
+infix operator |*|
 public func startGame() -> Deck {
     return Deck.newDeck().orderedDeck()
 }

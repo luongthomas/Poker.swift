@@ -28,9 +28,9 @@ public func |*| (lhs: Number, rhs: Suit) -> Card {
     return Card(number: lhs, suit: rhs)
 }
 
-extension SequenceType where Generator.Element == Card {
+extension Sequence where Iterator.Element == Card {
     func sortedCards() -> [Card] {
-        return self.sort { $0.suit.rawValue == $1.suit.rawValue ? $0.number.orderValue < $1.number.orderValue : $0.suit.rawValue < $1.suit.rawValue }
+        return self.sorted { $0.suit.rawValue == $1.suit.rawValue ? $0.number.orderValue < $1.number.orderValue : $0.suit.rawValue < $1.suit.rawValue }
     }
 }
 

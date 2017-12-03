@@ -12,53 +12,66 @@ import XCTest
 class HandValue: XCTestCase {
     
     func testHighcard() {
-        let cards = [.Ace |*| .Spades, .Three |*| .Clubs, .Seven |*| .Diamonds, .King |*| .Diamonds, .Jack |*| .Hearts]
-        assertHandValue(cards, .HighCard)
+        let cards = [.ace |*| .spades, .three |*| .clubs, .seven |*| .diamonds, .king |*| .diamonds, .jack |*| .hearts]
+        assertHandValue(cards, .highCard)
     }
     
     func testPair() {
-        let cards = [.Ace |*| .Spades, .Ace |*| .Clubs, .Seven |*| .Diamonds, .King |*| .Diamonds, .Jack |*| .Hearts]
-        assertHandValue(cards, .Pair)
+        let cards = [.ace |*| .spades, .ace |*| .clubs, .seven |*| .diamonds, .king |*| .diamonds, .jack |*| .hearts]
+        assertHandValue(cards, .pair)
     }
     
     func testDoublePair() {
-        let cards = [.Ace |*| .Spades, .Ace |*| .Clubs, .Seven |*| .Diamonds, .Jack |*| .Diamonds, .Jack |*| .Hearts]
-        assertHandValue(cards, .DoublePair)
+        let cards = [.ace |*| .spades, .ace |*| .clubs, .seven |*| .diamonds, .jack |*| .diamonds, .jack |*| .hearts]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .doublePair)
     }
     
     func testThreeOfAKind() {
-        let cards = [.Ace |*| .Spades, .Ace |*| .Clubs, .Ace |*| .Diamonds, .King |*| .Diamonds, .Jack |*| .Hearts]
-        assertHandValue(cards, .ThreeOfAKind)
+        let cards = [.ace |*| .spades, .ace |*| .clubs, .ace |*| .diamonds, .king |*| .diamonds, .jack |*| .hearts]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .threeOfAKind)
     }
     
     func testFullHouse() {
-        let cards = [.Ace |*| .Spades, .Ace |*| .Clubs, .King |*| .Diamonds, .King |*| .Diamonds, .King |*| .Hearts]
-        assertHandValue(cards, .FullHouse)
+        let cards = [.ace |*| .spades, .ace |*| .clubs, .king |*| .diamonds, .king |*| .diamonds, .king |*| .hearts]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .fullHouse)
     }
     
     func testFlush() {
-        let cards = [.Ace |*| .Spades, .Ace |*| .Spades, .Seven |*| .Spades, .King |*| .Spades, .Jack |*| .Spades]
-        assertHandValue(cards, .Flush)
+        let cards = [.ace |*| .spades, .ace |*| .spades, .seven |*| .spades, .king |*| .spades, .jack |*| .spades]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .flush)
     }
     
     func testStraight() {
-        let cards = [.Ace |*| .Spades, .Two |*| .Clubs, .Three |*| .Diamonds, .Four |*| .Diamonds, .Five |*| .Hearts]
-        assertHandValue(cards, .Straight)
+        let cards = [.ace |*| .spades, .two |*| .clubs, .three |*| .diamonds, .four |*| .diamonds, .five |*| .hearts]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .straight)
     }
     
     func testFourOfAKind() {
-        let cards = [.Ace |*| .Spades, .Two |*| .Clubs, .Ace |*| .Diamonds, .Ace |*| .Diamonds, .Ace |*| .Hearts]
-        assertHandValue(cards, .FourOfAKind)
+        let cards = [.ace |*| .spades, .two |*| .clubs, .ace |*| .diamonds, .ace |*| .diamonds, .ace |*| .hearts]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .fourOfAKind)
     }
     
     func testStraightFlush() {
-        let cards = [.Ace |*| .Spades, .Two |*| .Spades , .Three |*| .Spades, .Four |*| .Spades, .Five |*| .Spades]
-        assertHandValue(cards, .StraightFlush)
+        let cards = [.ace |*| .spades, .two |*| .spades , .three |*| .spades, .four |*| .spades, .five |*| .spades]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .straightFlush)
+    }
+    
+    func testAceHighFlush() {
+        let cards = [.jack |*| .spades, .queen |*| .spades, .ace |*| .spades, .king |*| .spades, .ten |*| .spades]
+        print(Hand(cards: cards).valueHand())
+        assertHandValue(cards, .straightFlush)
     }
     
 }
 
-func assertHandValue(cards: [Card], _ value: Hand.Value) {
+func assertHandValue(_ cards: [Card], _ value: Hand.Value) {
     
      XCTAssertEqual(Hand(cards: cards).valueHand().value, value)
 }

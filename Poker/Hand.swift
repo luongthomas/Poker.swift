@@ -16,22 +16,22 @@ public struct Hand {
     
     public enum Value: Int {
 
-        case HighCard = 0
-        case Pair
-        case DoublePair
-        case ThreeOfAKind
-        case Straight
-        case Flush
-        case FullHouse
-        case FourOfAKind
-        case StraightFlush
+        case highCard = 0
+        case pair
+        case doublePair
+        case threeOfAKind
+        case straight
+        case flush
+        case fullHouse
+        case fourOfAKind
+        case straightFlush
     }
     
     public struct RealValue: CustomStringConvertible {
         let value: Value
         let order: [Number]
         public var description: String {
-            return String(value) + self.order.reduce(" ") { $0 + $1.emojiValue }
+            return String(describing: value) + self.order.reduce(" ") { $0 + $1.emojiValue }
         }
     }
     
@@ -45,11 +45,11 @@ public struct Hand {
         let (isTrio, trioNs) = detectGroup(numbers, count: 3)
         
         // Check for Straight Flush
-        guard !isFlush || !isStraight else { return RealValue(value: .StraightFlush, order: straightNumbers)}
+        guard !isFlush || !isStraight else { return RealValue(value: .straightFlush, order: straightNumbers)}
         
         // Check for Four of a Kind
         let (isFour, fourNs) = detectGroup(numbers, count: 4)
-        guard !isFour else { return RealValue(value: .FourOfAKind, order: fourNs) }
+        guard !isFour else { return RealValue(value: .fourOfAKind, order: fourNs) }
         
         // Check for full
         let (isFullPair, fullNumbers) = detectGroup(trioNs, count: 2)
@@ -58,17 +58,17 @@ public struct Hand {
             let firsts = [trioNs[0], fullNumbers[0]]
             let merged = firsts + fullNumbers.filter { !firsts.contains($0) }
             
-            return RealValue(value: .FullHouse, order: merged)
+            return RealValue(value: .fullHouse, order: merged)
         }
         
         // Check for Flush
-        guard !isFlush else { return RealValue(value: .Flush, order: flushNumbers)}
+        guard !isFlush else { return RealValue(value: .flush, order: flushNumbers)}
         
         // Check for Straight
-        guard !isStraight else { return RealValue(value: .Straight, order: straightNumbers)}
+        guard !isStraight else { return RealValue(value: .straight, order: straightNumbers)}
         
         // Check for Three of a Kind
-        guard !isTrio else { return RealValue(value: .ThreeOfAKind, order: trioNs) }
+        guard !isTrio else { return RealValue(value: .threeOfAKind, order: trioNs) }
         
         // Check for Double Pair
         let (p2, n2) = detectGroup(pairNumbers, count: 2)
@@ -76,19 +76,19 @@ public struct Hand {
             
             let firsts = [max(pairNumbers[0], n2[0]), min(pairNumbers[0], n2[0])] // First in the array are the paired numbers ordered
             let merged = firsts + n2.filter { !firsts.contains($0) } // And then all the order numbers
-            return RealValue(value: .DoublePair, order: merged)
+            return RealValue(value: .doublePair, order: merged)
         }
         
         // Check for Pair
-        guard !isPair else { return RealValue(value: .Pair, order: pairNumbers) }
+        guard !isPair else { return RealValue(value: .pair, order: pairNumbers) }
         
         // Last option is just high card
-        return RealValue(value: .HighCard, order: numbers.sort { $0.rawValue > $1.rawValue })
+        return RealValue(value: .highCard, order: numbers.sorted { $0.rawValue > $1.rawValue })
     }
 
 }
 
-public func bestHand(hand1: Hand, _ hand2: Hand) -> Hand {
+public func bestHand(_ hand1: Hand, _ hand2: Hand) -> Hand {
     
     let v1 = hand1.valueHand()
     let v2 = hand2.valueHand()
@@ -131,43 +131,55 @@ public func ==(lhs: Hand, rhs: Hand) -> Bool {
 }
 
 // This function is a bit dirty, it could use some refactor
-func detectStraight(numbers: [Number]) -> (Bool, [Number]){
+func detectStraight(_ numbers: [Number]) -> (Bool, [Number]){
     
     // Beware of the ace. It can be used in A2345 and 10JQKA
-    let sortedNumbers = numbers.flatMap { $0.straightValues }.sort()
-    var allowedErrors = sortedNumbers.count - numbers.count
+    let sortedNumbers = numbers.flatMap { $0.straightValues }.sorted()
+    
+    // Add one error allowed to account for if
+    // Ace is at the beginning of sortedNumbers AND end of sortedNumbers (0 and 13 respectively)
+    
+    var allowedErrors = sortedNumbers.count - numbers.count + 1
     
     guard sortedNumbers.count <= numbers.count + 1 else { return (false, [])}
     
-    var lastNumber = sortedNumbers[0]
-    var straightNumber = sortedNumbers[0]
-    for i in 1..<sortedNumbers.count {
-        if sortedNumbers[i]-lastNumber != 1 {
-            if allowedErrors-- <= 0 {
+    var previousCardValue = sortedNumbers[0]
+    var currentHighestRunningStraightValue = sortedNumbers[0]
+    
+    let allowedDifferenceBetweenTwoCards = 1
+    
+    // Fixed test by iterating only to the count - 1th element
+    for i in 1..<sortedNumbers.count - 1 {
+        let currentCardValue = sortedNumbers[i]
+        
+        if currentCardValue - previousCardValue != allowedDifferenceBetweenTwoCards {
+            // There is a gap of 2(+) between the card values
+            allowedErrors -= 1
+            if allowedErrors <= 0 {
                 return (false, [])
             }
         } else {
-            straightNumber = sortedNumbers[i]
+            currentHighestRunningStraightValue = currentCardValue
         }
-        lastNumber = sortedNumbers[i]
+        previousCardValue = sortedNumbers[i]
     }
     
-    return (true, [Number(rawValue: straightNumber)!])
+    return (true, [Number(rawValue: currentHighestRunningStraightValue)!])
 }
 
-func detectFlush(cards: [Card]) -> (Bool, [Number]) {
+func detectFlush(_ cards: [Card]) -> (Bool, [Number]) {
     
     let firstCard = cards[0]
     let sameSuit = cards.filter { $0.suit == firstCard.suit }
     
     guard sameSuit.count == cards.count else { return (false, []) }
     
-    let orderedNumbers = cards.map { $0.number }.sort { $0.rawValue > $1.rawValue }
+    let orderedNumbers = cards.map { $0.number }.sorted { $0.rawValue > $1.rawValue }
     
     return (true, orderedNumbers)
 }
 
-func detectGroup(numbers: [Number], count: Int) -> (Bool, [Number]) {
+func detectGroup(_ numbers: [Number], count: Int) -> (Bool, [Number]) {
     
     let frecuencies = numberFrecuencies(numbers)
     let paired = frecuencies.filter {
@@ -180,12 +192,12 @@ func detectGroup(numbers: [Number], count: Int) -> (Bool, [Number]) {
     
     guard paired.count > 0 else { return (false, []) }
     let pair = paired[0]
-    let notPaired = numbers.map { $0.rawValue }.filter { $0 != pair }.sort { $0 > $1 }
+    let notPaired = numbers.map { $0.rawValue }.filter { $0 != pair }.sorted { $0 > $1 }
     let remaining = ([pair] + notPaired).map { Number(rawValue: $0)! }
     return (true, remaining)
 }
 
-func numberFrecuencies(numbers: [Number]) -> [Int:Int] {
+func numberFrecuencies(_ numbers: [Number]) -> [Int:Int] {
     return numbers.map { $0.rawValue }.reduce([Int:Int]()) {
         a, e in
         var newa = a

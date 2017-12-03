@@ -38,6 +38,6 @@ extension Deck: CustomStringConvertible {
     }
 }
 // Does it already exist in swift?
-func combine<U,V,T>(left: [U], _ right: [V], combinator: (U, V) -> T) -> [T] {
+func combine<U,V,T>(_ left: [U], _ right: [V], combinator: (U, V) -> T) -> [T] {
     return (0..<left.count*right.count).map { i in combinator(left[i%left.count], right[i%right.count]) }
 }

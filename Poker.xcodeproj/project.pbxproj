@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		E1AE64301BB1BC1F00C648C4 /* Poker.h in Headers */ = {isa = PBXBuildFile; fileRef = E1AE642F1BB1BC1F00C648C4 /* Poker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1AE64371BB1BC1F00C648C4 /* Poker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AE642C1BB1BC1F00C648C4 /* Poker.framework */; settings = {ASSET_TAGS = (); }; };
-		E1AE64471BB1BC3200C648C4 /* Poker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64461BB1BC3200C648C4 /* Poker.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE64491BB1C00400C648C4 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64481BB1C00400C648C4 /* Deck.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE644B1BB1C02200C648C4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE644A1BB1C02200C648C4 /* Card.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE644F1BB1D8F100C648C4 /* Emojiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE644E1BB1D8F100C648C4 /* Emojiable.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE64511BB1D93600C648C4 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64501BB1D93600C648C4 /* Suit.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE64531BB1D94C00C648C4 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64521BB1D94C00C648C4 /* Number.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE64551BB1DC5E00C648C4 /* stlibext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64541BB1DC5E00C648C4 /* stlibext.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE64571BB1E34900C648C4 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64561BB1E34900C648C4 /* Hand.swift */; settings = {ASSET_TAGS = (); }; };
-		E1AE9C901BB31BA80008FB44 /* HandValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE9C8F1BB31BA80008FB44 /* HandValue.swift */; settings = {ASSET_TAGS = (); }; };
-		E1EBDFC01BC2AC2800B9470A /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBDFBF1BC2AC2800B9470A /* Table.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F592031BD50B7700FAF0B0 /* TableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F592021BD50B7700FAF0B0 /* TableValue.swift */; settings = {ASSET_TAGS = (); }; };
+		E1AE64371BB1BC1F00C648C4 /* Poker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AE642C1BB1BC1F00C648C4 /* Poker.framework */; };
+		E1AE64471BB1BC3200C648C4 /* Poker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64461BB1BC3200C648C4 /* Poker.swift */; };
+		E1AE64491BB1C00400C648C4 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64481BB1C00400C648C4 /* Deck.swift */; };
+		E1AE644B1BB1C02200C648C4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE644A1BB1C02200C648C4 /* Card.swift */; };
+		E1AE644F1BB1D8F100C648C4 /* Emojiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE644E1BB1D8F100C648C4 /* Emojiable.swift */; };
+		E1AE64511BB1D93600C648C4 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64501BB1D93600C648C4 /* Suit.swift */; };
+		E1AE64531BB1D94C00C648C4 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64521BB1D94C00C648C4 /* Number.swift */; };
+		E1AE64551BB1DC5E00C648C4 /* stlibext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64541BB1DC5E00C648C4 /* stlibext.swift */; };
+		E1AE64571BB1E34900C648C4 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE64561BB1E34900C648C4 /* Hand.swift */; };
+		E1AE9C901BB31BA80008FB44 /* HandValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE9C8F1BB31BA80008FB44 /* HandValue.swift */; };
+		E1EBDFC01BC2AC2800B9470A /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBDFBF1BC2AC2800B9470A /* Table.swift */; };
+		E1F592031BD50B7700FAF0B0 /* TableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F592021BD50B7700FAF0B0 /* TableValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,14 +173,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Jorge Izquierdo";
 				TargetAttributes = {
 					E1AE642B1BB1BC1F00C648C4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 					};
 					E1AE64351BB1BC1F00C648C4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -264,13 +266,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -310,13 +320,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -335,6 +353,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -357,6 +376,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -376,6 +396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.izqui.Poker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -387,6 +408,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.izqui.PokerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -398,6 +420,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.izqui.PokerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
